@@ -16,7 +16,7 @@ class Inventory{
     return this.guitars.find(guitar => {
         //Ignore serial number and price
         if (searchGuitar.builder && searchGuitar.builder !== guitar.getBuilder()) return false;
-        if (searchGuitar.model && searchGuitar.model !== guitar.getModel()) return false;
+        if (searchGuitar.model && searchGuitar.model.toLowerCase() !== guitar.getModel().toLowerCase()) return false;
         if (searchGuitar.type && searchGuitar.type !== guitar.getType()) return false;
         if (searchGuitar.backWood && searchGuitar.backWood !== guitar.getBackWood()) return false;
         if (searchGuitar.topWood && searchGuitar.topWood !== guitar.getTopWood()) return false;
