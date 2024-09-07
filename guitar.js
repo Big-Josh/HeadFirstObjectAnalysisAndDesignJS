@@ -1,16 +1,11 @@
-class Guitar {
-    constructor(serialNumber, builder, model, type, backWood, topWood, price){
-        this.serialNumber = serialNumber;
+class GuitarSpec{
+    constructor( builder, model, type, backWood, topWood){
         this.builder = builder;
         this.model = model;
         this.type = type;
         this.backWood = backWood;
         this.topWood = topWood
-        this.price  = price
     }
-    getSerialNumber(){
-        return this.serialNumber
-    } 
     getBuilder(){
         return this.builder
     }
@@ -25,6 +20,28 @@ class Guitar {
     }
     getTopWood() {
         return this.topWood;
+}
+}
+
+
+
+class Guitar {
+    constructor(serialNumber, price, spec){
+        this.serialNumber = serialNumber;
+        this.spec = spec;
+        this.price  = price
+    }
+    getSerialNumber(){
+        return this.serialNumber
+    } 
+    getBuilder(){
+        return this.builder
+    }
+    getPrice() {
+        return this.price;
+    }
+    getSpec(){
+        return this.spec
     }
 }
 
