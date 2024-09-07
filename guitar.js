@@ -1,10 +1,11 @@
 class GuitarSpec{
-    constructor( builder, model, type, backWood, topWood){
+    constructor( builder, model, type, backWood, topWood, numStrings){
         this.builder = builder;
         this.model = model;
         this.type = type;
         this.backWood = backWood;
         this.topWood = topWood
+        this.numStrings = numStrings
     }
     getBuilder(){
         return this.builder
@@ -21,6 +22,19 @@ class GuitarSpec{
     getTopWood() {
         return this.topWood;
 }
+    getNumstrings(){
+        return this.numStrings
+    }
+    
+    matches(otherSpec){
+        if (this.builder !== otherSpec.getBuilder()) return false;
+        if (this.model && this.model.toLowerCase() !== otherSpec.getModel().toLowerCase()) return false;
+        if (this.type !== otherSpec.getType()) return false;
+        if (this.backWood !== otherSpec.getBackWood()) return false;
+        if (this.topWood !== otherSpec.getTopWood()) return false;
+        return true;
+    }
+
 }
 
 
