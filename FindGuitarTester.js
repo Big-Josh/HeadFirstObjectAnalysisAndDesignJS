@@ -1,4 +1,4 @@
-const Guitar = require('./guitar.js');
+const {Guitar,GuitarSpec} = require('./guitar.js');
 const Inventory = require('./inventory.js');
 
 const Type = Object.freeze({
@@ -34,18 +34,20 @@ class FindGuitarTester {
         FindGuitarTester.initializeInventory(inventory);
 
         // Erin is looking for a Fender Stratocaster electric guitar made of Alder wood
-        const whatErinLikes = new Guitar(null, 0, Builder.FENDER, 'Stratocastor', Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
+        const whatErinLikes = new GuitarSpec(Builder.FENDER, 'Stratocastor', Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
         const guitars = inventory.search(whatErinLikes)
 
         if (guitars != null){
             console.log("Erin, you might like these guitars : ");
+                
                 for(let i = 0; i < guitars.length; i ++){
                     let guitar = guitars[i]
+                    let guitarspec = guitar.getSpec();
                     console.log(
-                    guitar.getBuilder() + " " + guitar.getModel() + " " +
-                    guitar.getType() + " guitar:\n" +
-                    guitar.getBackWood() + " back and sides,\n" + 
-                    guitar.getTopWood() + " top.\nYou can have it for only $" + 
+                    guitarspec.getBuilder() + " " + guitarspec.getModel() + " " +
+                    guitarspec.getType() + " guitar:\n" +
+                    guitarspec.getBackWood() + " back and sides,\n" + 
+                    guitarspec.getTopWood() + " top.\nYou can have it for only $" + 
                     guitar.getPrice() + "!")};
         } else {
             console.log("Sorry, Erin, we have nothing for you.");

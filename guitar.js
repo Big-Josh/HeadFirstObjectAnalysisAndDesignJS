@@ -34,9 +34,6 @@ class Guitar {
     getSerialNumber(){
         return this.serialNumber
     } 
-    getBuilder(){
-        return this.builder
-    }
     getPrice() {
         return this.price;
     }
@@ -46,4 +43,4 @@ class Guitar {
 }
 
 // Export the Guitar class
-module.exports = Guitar;
+module.exports = {Guitar,GuitarSpec}

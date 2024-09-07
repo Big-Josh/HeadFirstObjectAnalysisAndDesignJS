@@ -1,11 +1,14 @@
-const Guitar = require('./guitar.js');
+const {Guitar,GuitarSpec} = require('./guitar.js');
 
 class Inventory{
     constructor(){
         this.guitars = [];
     }
    addguitar(serialNumber, price, builder, model, type, backWood, topWood){
-    const guitar = new Guitar(serialNumber, price, builder, model, type, backWood, topWood)
+    // Create a GuitarSpec object first
+    const guitarSpec = new GuitarSpec(builder, model, type, backWood, topWood);
+    // Create a Guitar object using the serialNumber, price, and guitarSpec
+    const guitar = new Guitar(serialNumber, price, guitarSpec);
     this.guitars.push(guitar)
    }
    getGuitar(serialNumber){
@@ -15,14 +18,14 @@ class Inventory{
    search(searchGuitar){
     let matchingGuitars = [];
     for (let i = 0; i < this.guitars.length; i++ ) {
-        let guitar = this.guitars[i];
+        let guitar = this.guitars[i]
+        let guitarspec = guitar.getSpec();
         //Ignore serial number and price
-        if (searchGuitar.builder && searchGuitar.builder !== guitar.getBuilder()) continue;
-        console.log(searchGuitar.model.toLowerCase(),guitar.getModel().toLowerCase())
-        if (searchGuitar.model && searchGuitar.model.toLowerCase() !== guitar.getModel().toLowerCase()) continue;
-        if (searchGuitar.type && searchGuitar.type !== guitar.getType()) continue;
-        if (searchGuitar.backWood && searchGuitar.backWood !== guitar.getBackWood()) continue;
-        if (searchGuitar.topWood && searchGuitar.topWood !== guitar.getTopWood()) continue;
+        if (searchGuitar.builder && searchGuitar.builder !== guitarspec.getBuilder()) continue;
+        if (searchGuitar.model && searchGuitar.model.toLowerCase() !== guitarspec.getModel().toLowerCase()) continue;
+        if (searchGuitar.type && searchGuitar.type !== guitarspec.getType()) continue;
+        if (searchGuitar.backWood && searchGuitar.backWood !== guitarspec.getBackWood()) continue;
+        if (searchGuitar.topWood && searchGuitar.topWood !== guitarspec.getTopWood()) continue;
     
         // add guitar to the array if all conditions match
         matchingGuitars.push(guitar)
