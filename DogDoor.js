@@ -17,3 +17,5 @@ class DogDoor {
         return this.open; // Return the current state of the door
     }
 }
+
+module.exports = DogDoor
