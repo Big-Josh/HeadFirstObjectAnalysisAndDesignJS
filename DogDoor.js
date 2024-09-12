@@ -16,7 +16,7 @@ class DogDoor {
             this.open = false;
             console.log("The door is closing automatically after 5 seconds");
             
-        },5000);
+        },1);
     }
 
 
