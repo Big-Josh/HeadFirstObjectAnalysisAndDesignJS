@@ -19,6 +19,8 @@ class DogDoorSimulator {
         try {
             // Simulate a 10-second delay before Fido gets stuck outside
             setTimeout(() => {
+                console.log("...but he's stuck outside!");
+                console.log("\nFido starts barking...");
             }, 10000);
         } catch (error) {
             console.error("Error occurred: ", error);
