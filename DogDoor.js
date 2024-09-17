@@ -1,6 +1,9 @@
+Bark = require('./Bark.js')
+
 class DogDoor {
     constructor() {
         this.open = false; // Initially, the door is closed
+        this.allowedbark = new Bark
     }
 
     closeDoor() {
@@ -21,8 +24,19 @@ class DogDoor {
 
 
     isOpen() {
-        return this.open; // Return the current state of the door
+        return this.open; 
     }
+
+    setAllowedbark(bark) {
+        this.allowedbark = bark; 
+    }
+
+    getAllowedbark() {
+        return this.allowedbark; 
+    }
+
 }
+
+
 
 module.exports = DogDoor
